@@ -2,11 +2,13 @@ package main
 
 import (
 	"QuoteDay/data"
-	"fmt"
+	"QuoteDay/display"
 )
 
 func main() {
 	quote := data.GetData()
-	fmt.Println(quote.Content)
-	fmt.Println(quote.Author)
+	// fmt.Println(quote.Content)
+	// fmt.Println(quote.Author)
+
+	display.Display(quote.Content, quote.Author)
 }
