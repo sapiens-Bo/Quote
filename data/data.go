@@ -19,12 +19,22 @@ type Quote struct {
 	DateModified string   `json:"dateModified"`
 }
 
-func GetData() Quote {
-	url := "https://api.quotable.io/random"
+func GetData(category string) Quote {
+	var url string
+	if category == "" {
+		url = "https://api.quotable.io/random"
+	} else {
+		url = "https://api.quotable.io/random?tags=" + category
+	}
 
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Printf("Error with %s\n", url)
+		os.Exit(1)
+	}
+
+	if resp.StatusCode == 404 {
+		fmt.Println("Category not found")
 		os.Exit(1)
 	}
 

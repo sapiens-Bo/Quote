@@ -15,6 +15,7 @@ func Display(quote, author string) {
 
 	p := widgets.NewParagraph()
 	p.Text = quote
+	p.TextStyle = ui.NewStyle(ui.ColorYellow)
 	p.SetRect(0, 0, 50, 5)
 	p.Title = author
 	p.TitleStyle = ui.NewStyle(ui.ColorMagenta)
